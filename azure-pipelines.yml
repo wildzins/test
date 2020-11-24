@@ -11,5 +11,5 @@ steps:
     displayName: Set new variable value
   - script: |
       echo ${{ variables.one }} # outputs initialValue
-      echo $(variables['liveagency']) # outputs secondValue
+      echo $(variables['one']) # outputs secondValue
     displayName: Second variable pass
