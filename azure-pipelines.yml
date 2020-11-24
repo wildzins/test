@@ -13,4 +13,3 @@ steps:
       echo ${{ variables.one }} # outputs initialValue
       echo $(liveagency) # outputs secondValue
     displayName: Second variable pass
-    condition: and(eq($(liveagency), 'secondValue'))
