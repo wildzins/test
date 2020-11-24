@@ -10,7 +10,7 @@ jobs:
         echo ${{ variables.one }} # outputs initialValue
         echo $(one)
       displayName: First variable pass
-    - bash: echo '##vso[task.setvariable variable=liveagency]secondValue'
+    - bash: echo '##vso[task.setvariable variable=liveagency;isOutput=true]secondValue'
       displayName: Set new variable value
       name: test
     - script: |
