@@ -2,14 +2,26 @@ variables:
 - name: one
   value: initialValue 
 
-steps:
-  - script: |
-      echo ${{ variables.one }} # outputs initialValue
-      echo $(one)
-    displayName: First variable pass
-  - bash: echo '##vso[task.setvariable variable=liveagency]secondValue'
-    displayName: Set new variable value
-  - script: |
-      echo ${{ variables.one }} # outputs initialValue
-      echo $(liveagency) # outputs secondValue
-    displayName: Second variable pass
+jobs:
+- job: Job1
+  displayName: Job1
+  steps:
+    - script: |
+        echo ${{ variables.one }} # outputs initialValue
+        echo $(one)
+      displayName: First variable pass
+    - bash: echo '##vso[task.setvariable variable=liveagency]secondValue'
+      displayName: Set new variable value
+    - script: |
+        echo ${{ variables.one }} # outputs initialValue
+        echo $(liveagency) # outputs secondValue
+      displayName: Second variable pass
+
+- job: Job2
+  dependsOn: Job1
+  displayName: Job2
+  condition: eq($(liveagency), 'secondValue')
+  steps:
+    - script: |
+        echo $(liveagency)
+      displayName: First variable pass
