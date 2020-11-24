@@ -20,7 +20,7 @@ jobs:
 - job: Job2
   dependsOn: Job1
   displayName: Job2
-  condition: and(succeeded())
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   steps:
     - script: |
         echo $(liveagency)
