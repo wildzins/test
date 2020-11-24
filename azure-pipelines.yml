@@ -12,5 +12,5 @@ steps:
   - script: |
       echo ${{ variables.one }} # outputs initialValue
       echo $(liveagency) # outputs secondValue
-      echo eq('$(liveagency)', 'secondValue')
+      echo $eq($(liveagency), 'secondValue')
     displayName: Second variable pass
