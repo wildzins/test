@@ -20,7 +20,7 @@ jobs:
 - job: Job2
   dependsOn: Job1
   displayName: Job2
-  condition: and(eq('$(one)', 'secondValue'))
+  condition: and(eq('$(liveagency)', 'secondValue'))
   steps:
     - script: |
         echo $(liveagency)
