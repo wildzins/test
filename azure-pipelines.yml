@@ -20,7 +20,7 @@ jobs:
 - job: Job2
   dependsOn: Job1
   displayName: Job2
-  condition: and(succeeded(), eq(variables.liveagency, 'secondValue'))
+  condition: and(succeeded(), eq('${{ variables.liveagency }}', 'secondValue'))
   steps:
     - script: |
         echo $(liveagency)
