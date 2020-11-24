@@ -11,5 +11,6 @@ steps:
     displayName: Set new variable value
   - script: |
       echo ${{ variables.one }} # outputs initialValue
-      echo $(variables['one']) # outputs secondValue
+      echo $(liveagency) # outputs secondValue
     displayName: Second variable pass
+    runCondition: eq(variables['liveagencyId'], 'secondValue'))
