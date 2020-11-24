@@ -24,4 +24,4 @@ jobs:
   steps:
     - script: |
         echo $(liveagency)
-      displayName: First variable pass
+      displayName: With check
