@@ -24,7 +24,7 @@ jobs:
   variables:
   - name: aaa
     value: dependencies.Job1.outputs['test.liveagency']
-  condition: and(succeeded(), eq(aaa, 'secondValue'))
+  condition: and(succeeded(), eq($(aaa), 'secondValue'))
   steps:
     - script: |
         echo $(liveagency)
