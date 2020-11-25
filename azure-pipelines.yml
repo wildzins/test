@@ -24,7 +24,7 @@ jobs:
   condition: and(succeeded(), eq(dependencies.Job1.outputs['test.liveagency'], 'secondValue'))
   steps:
     - script: |
-        echo dependencies.Job1.outputs['test.liveagency']
+        echo $[ dependencies.Job1.outputs['test.liveagency'] ]
       displayName: With check
 
 - job: Job3
@@ -33,5 +33,5 @@ jobs:
   condition: and(succeeded(), eq(dependencies.Job1.outputs['test.liveagency'], 'secondValue'))
   steps:
     - script: |
-        echo dependencies.Job1.outputs['test.liveagency']
+        echo $[ dependencies.Job1.outputs['test.liveagency'] ]
       displayName: With check
