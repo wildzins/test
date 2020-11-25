@@ -19,7 +19,6 @@ jobs:
       displayName: Second variable pass
 
 - job: Job2
-  dependsOn: Job1
   displayName: Job2
   condition: and(succeeded(), eq(dependencies.Job1.outputs['test.liveagency'], 'secondValue'))
   steps:
