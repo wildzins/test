@@ -28,4 +28,4 @@ jobs:
     - script: |
         echo $(variables['agencyName'])
       displayName: With check
-      condition: eq(variables['agencyName'], 'secondValue')
+      condition: and(eq(variables['agencyName'], 'secondValue2'), eq(variables['agencyName'], 'secondValue'))
