@@ -21,17 +21,9 @@ jobs:
 - job: Job2
   dependsOn: Job1
   displayName: Job2
-  condition: and(succeeded(), eq(dependencies.Job1.outputs['test.liveagency'], 'secondValue'))
+  condition: and(succeeded())
   steps:
     - script: |
         echo $($[ dependencies.Job1.outputs['test.liveagency'] ])
       displayName: With check
-
-- job: Job3
-  dependsOn: Job2
-  displayName: Job3
-  condition: and(succeeded(), eq(dependencies.Job1.outputs['test.liveagency'], 'secondValue'))
-  steps:
-    - script: |
-        echo $($[ dependencies.Job1.outputs['test.liveagency'] ])
-      displayName: With check
+      condition: and(eq(dependencies.Job1.outputs['test.liveagency'], 'secondValue'))
