@@ -28,4 +28,4 @@ jobs:
     - script: |
         echo $($[ dependencies.Job1.outputs['test.liveagency'] ])
       displayName: With check
-      condition: eq($(liveagency), 'secondValue')
+      condition: eq(liveagency, 'secondValue')
