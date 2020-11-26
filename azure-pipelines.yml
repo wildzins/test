@@ -23,9 +23,9 @@ jobs:
   displayName: Job2
   condition: succeeded()
   variables:
-    liveagency: $[ dependencies.Job1.outputs['test.liveagency'] ]
+    agencyName: $[ dependencies.Job1.outputs['test.liveagency'] ]
   steps:
     - script: |
-        echo $(liveagency)
+        echo $(agencyName)
       displayName: With check
-      condition: eq(variables['liveagency'], 'secondValue')
+      condition: eq(variables['agencyName'], 'secondValue')
