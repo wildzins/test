@@ -28,3 +28,4 @@ jobs:
     - script: |
         echo $(liveagency)
       displayName: With check
+      condition: eq(variables['liveagency'], 'secondValue')
