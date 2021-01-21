@@ -3,33 +3,6 @@ variables:
   value: initialValue 
 
 jobs:
-- job: Job1
-  displayName: Job1
-  steps:
-    - script: |
-        echo ${{ variables.one }} # outputs initialValue
-        echo $(one)
-      displayName: First variable pass
-    - bash: echo '##vso[task.setvariable variable=liveagency;isOutput=true]secondValue'
-      displayName: Set new variable value
-      name: test
-    - script: |
-        echo ${{ variables.one }} # outputs initialValue
-        echo $(liveagency) # outputs secondValue
-      displayName: Second variable pass
-
-- job: Job2
-  dependsOn: Job1
-  displayName: Job2
-  condition: succeeded()
-  variables:
-    agencyName: $[ dependencies.Job1.outputs['test.liveagency'] ]
-  steps:
-    - script: |
-        echo $(variables['agencyName'])
-      displayName: With check
-      condition: and(eq(variables['agencyName'], 'secondValue2'), eq(variables['agencyName'], 'secondValue'))
-      
 - job: Job3
   steps:
   - task: CmdLine@2
