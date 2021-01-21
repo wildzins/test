@@ -29,3 +29,12 @@ jobs:
         echo $(variables['agencyName'])
       displayName: With check
       condition: and(eq(variables['agencyName'], 'secondValue2'), eq(variables['agencyName'], 'secondValue'))
+      
+- job: Job3
+  steps:
+  - task: CmdLine@2
+    displayName: 'Run Azure Storage Emulator'
+    inputs:
+      script: |
+        "%ProgramFiles(x86)%\Microsoft SDKs\Azure\Storage Emulator\AzureStorageEmulator.exe" init /server "(localdb)\MsSqlLocalDb"
+        "%ProgramFiles(x86)%\Microsoft SDKs\Azure\Storage Emulator\AzureStorageEmulator.exe" start
